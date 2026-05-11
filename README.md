@@ -1,19 +1,30 @@
 Cluedo dans le terminal
-résultats ? = Cluedo fonctionnel
 
-PK ? => jouer
+Résultats attendus :
+  -  Cluedo simplifié, jouable a partir du terminal
+  -  Mécanique de déduction autour d’une combinaison secrète
 
-problèmes/opportunités ? => s'amuser sans amis
+Pourquoi ce projet est-il lancé ?
+  -  Pour pouvoir jouer à cluedo de manière numérique
 
-contraintes :
-- temps = jusqu'à fin Mai
-- budget = inexistant
-- ressources = connaissances
-- réglementations = client
-- code en C
-- facile à prendre en main (intuitif)
+Quels problèmes ou opportunités vise t’il à adresser ?
+  -  S'amuser en jouant à un jeu de déduction avec, ou sans amis
+
+Contraintes :
+- Temps : jusqu'à fin Mai
+- Budget : bénévolat
+- Ressources = connaissances, documents en lignes, règles du jeu
+- Réglementations : en fonction du client
+- Code en C
+- Facile à prendre en main (intuitif)
+
+Changements par rapport au jeu original :
+  -  Suppression du concept de mentir car il peut être liée a des scénarios inintéressants
+  -  Suppression du plateau ( garder un léger plateau graphique afin de ne pas perdre les joueurs )
 
 
-suppression concept mentir
-suppression plateau ( garder plateau graphique )
-pk ? => CLUEDO SIMPLIFIE
+ATTENTES :
+
+- Clients : Un petit jeu d’enquête, jouable dans un terminal, inspiré de cluedo, ayant deux difficultés d'IA
+- Utilisateurs finaux : Un jeu simple a prendre en main, intéréssant et isuelement attirant
+- Équipe projet : Un projet détaillé afin de comprendre ses tâches et comment bien les exécuter
