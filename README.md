@@ -19,7 +19,6 @@ Contraintes :
 - Facile à prendre en main (intuitif)
 
 Changements par rapport au jeu original :
-  -  Suppression du concept de mentir car il peut être liée a des scénarios inintéressants
   -  Suppression du plateau ( garder un léger plateau graphique afin de ne pas perdre les joueurs )
 
 
