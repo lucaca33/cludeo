@@ -1,6 +1,6 @@
 Classe joueur :
   -  nom du joueur : char[30]
-  -  cartes (pas classe, liste de nom) : char[30]*
+  -  cartes
   -  valeur du lancer de dés : int
 
 Classe cartes : (liste chainé)
