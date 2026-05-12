@@ -28,3 +28,6 @@ ATTENTES :
 - Clients : Un petit jeu d’enquête, jouable dans un terminal, inspiré de cluedo, ayant deux difficultés d'IA
 - Utilisateurs finaux : Un jeu simple a prendre en main, intéréssant et isuelement attirant
 - Équipe projet : Un projet détaillé afin de comprendre ses tâches et comment bien les exécuter
+
+
+jira : https://lucascoelho2211.atlassian.net/jira/software/projects/KAN/boards/1
