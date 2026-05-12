@@ -40,4 +40,3 @@ fonctions :
   - accusation(joueur * player) : le joueur établit une accusation avec 3 cartes de son choix, si la combinaison n'est pas la même que la combinaison créée dans carte_coupable, alors les cartes du joueur son révélées et il est retiré du jeu
   - afficher_menu() : affiche le menu de jeu
   - afficher_plateau(joueur * player) : affiche toutes les pièces du plateau avec les personnages et leurs localisations
-  - 
