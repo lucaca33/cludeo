@@ -36,4 +36,8 @@ fonctions :
   - melanger_cartes(cartes * liste) : création  d'une autre liste + prendre les indices aléatoire et placer les cartes de la première liste suivant l'indice dans la deuxième
   - lancer_des(joueur * player) : augmente la valeur de dé du joueur afin de réaliser un déplacement ( entre 2 et 12)
   - deplacement(joueur * player) : affiche une liste de pièce où le joueur peut aller et le déplace selon son choix
-  - hypothese(joueur * player, cartes * liste) : le joueur établit une hypothèse et vérifie 
+  - hypothese(joueur * player1, joueur * player2, cartes * liste) : le joueur1 établit une hypothèse et vérifie les cartes du joueur2
+  - accusation(joueur * player) : le joueur établit une accusation avec 3 cartes de son choix, si la combinaison n'est pas la même que la combinaison créée dans carte_coupable, alors les cartes du joueur son révélées et il est retiré du jeu
+  - afficher_menu() : affiche le menu de jeu
+  - afficher_plateau(joueur * player) : affiche toutes les pièces du plateau avec les personnages et leurs localisations
+  - 
