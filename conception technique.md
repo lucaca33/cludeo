@@ -29,3 +29,11 @@ boucle principale
   -  message de fin
   -  demande si joueur veut rejouer ( on repart en début de boucle principale )
   -  libérer les variables alloués en malloc
+
+
+fonctions :
+  - carte_coupable(cartes * liste) : sauvegarde 3 cartes aléatoire pour la combinaison secrète de type différents et les retire de la liste principale
+  - melanger_cartes(cartes * liste) : création  d'une autre liste + prendre les indices aléatoire et placer les cartes de la première liste suivant l'indice dans la deuxième
+  - lancer_des(joueur * player) : augmente la valeur de dé du joueur afin de réaliser un déplacement ( entre 2 et 12)
+  - deplacement(joueur * player) : affiche une liste de pièce où le joueur peut aller et le déplace selon son choix
+  - hypothese(joueur * player, cartes * liste) : le joueur établit une hypothèse et vérifie 
