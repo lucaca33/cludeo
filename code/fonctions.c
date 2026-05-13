@@ -34,3 +34,23 @@ Joueur * rentrer_joueurs(){
 
     return joueurs;
 }
+
+void liste_shuffle(cartes * liste[], int taille){
+    int indice_utilises[50];
+    cartes mélange[50];
+    for(int i = 0;i < taille;i++){
+        int indice;
+        int verif = 0;
+        while (verif == 0){
+            for (int j = 0;j < i; j++){
+                verif = 1;
+                if(indice == indice_utilises[j]){
+                    verif = 0;
+                }
+            }
+        }
+        indice_utilises[i] = indice;
+        mélange[i] = liste[indice];
+    }
+    liste = mélange;
+}
