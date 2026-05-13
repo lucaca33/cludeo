@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <windows.h> // pour l'utf8
 
 typedef struct Cartes{
     char nom[30];
