@@ -175,3 +175,31 @@ int accusation(Joueur * player,cartes * reponse[], int nombre_carte){
         return 0;
     }
 }
+
+Joueur * elimination(Joueur * player)
+{
+    if(player == NULL)
+    {
+        return;
+    }
+    printf("\n Le joueur %s possedait : ",player->nom);
+    for(int i = 0; i < sizeof(player->cartes); i++)
+    {
+        if(player->cartes[i].type == "lieux")
+        {
+            printf("\n Le lieux %s",player->cartes[i].nom);
+        }
+        if(player->cartes[i].type == "arme")
+        {
+            printf("\n L'arme' %s",player->cartes[i].nom);
+        }
+        else
+        {
+            printf("\n Le suspect %s",player->cartes[i].nom);
+        }
+    }
+    free(player->cartes);
+    player->cartes = NULL;
+    free(player);
+    player = NULL;
+}
