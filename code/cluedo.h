@@ -24,7 +24,7 @@ Cartes* carte_coupable(Cartes * liste);
 Cartes* melanger_cartes(Cartes * liste);
 Cartes * init_deck();
 
-Joueur * rentrer_joueurs();
+Joueur * rentrer_joueurs(int * nb);
 
 void lancer_des(Joueur * player);
 void deplacement(Joueur * player);
