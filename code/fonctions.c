@@ -42,8 +42,9 @@ void liste_shuffle(cartes * liste[], int taille){
         int indice;
         int verif = 0;
         while (verif == 0){
+            indice;  #donner une valeur aléatoire
+            verif = 1;
             for (int j = 0;j < i; j++){
-                verif = 1;
                 if(indice == indice_utilises[j]){
                     verif = 0;
                 }
