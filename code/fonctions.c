@@ -28,6 +28,7 @@ Joueur * rentrer_joueurs(){
         fgets(joueurs[i].nom, 30, stdin); // on récupere le nom du n-ieme joueur
         joueurs[i].val_des = 0;
         // initialiser les cartes du joueur
+        // pour l'instant je fait pas, a voir plus tard
     }
     
 
