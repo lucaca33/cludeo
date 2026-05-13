@@ -87,7 +87,7 @@ void lancer_des(Joueur * player)
     srand(time(NULL));
     nombre = (rand() % (MAX + 1 - MIN)) + MIN;
     printf("Vous avez obtenu %d\n", nombre);
-    player->val_des = nombre;
+    player->val_des += nombre;
 }
 
 Joueur * rentrer_joueurs(int * nb){
@@ -158,7 +158,7 @@ Cartes* carte_coupable(Cartes * liste)
     return liste_coupable;    
 }
 
-int accusation(Joueur * player,cartes * reponse[], int nombre_carte){
+int accusation(Joueur * player,Cartes * reponse, int nombre_carte){
     char meutrier[50];
     char arme[50];
     char lieu[50];
@@ -168,12 +168,12 @@ int accusation(Joueur * player,cartes * reponse[], int nombre_carte){
     scanf("%s",&arme);
     printf("\n Ou le crime a t il ete commis");
     scanf("%s",&lieu);
-    if (meutrier == reponse[0] && arme == reponse[1] && lieu == reponse[2]){
-        printf("BONNE REPONSE.\n %s a donc ete arrete et passera le restant de ses jours en prison \n%s a gagne.",reponse[0]-->nom,player-->nom);
+    if (meutrier == reponse[0].nom && arme == reponse[1].nom && lieu == reponse[2].nom){
+        printf("BONNE REPONSE.\n %s a donc ete arrete et passera le restant de ses jours en prison \n%s a gagne.",reponse[0].nom,player->nom);
         return 1;
     }
     else{
-        printf("C'est une mauvaise reponse. \n %s est donc elimine.",player-->nom);
+        printf("C'est une mauvaise reponse. \n %s est donc elimine.",player->nom);
         return 0;
     }
 }

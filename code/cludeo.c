@@ -18,10 +18,11 @@ int main(){
         printf("=====\nTour n°%d=====\n", tour);
         for (int i = 0; i < nb_joueurs; i++)
         {
-            printf("Au tour %s de jouer \n\n", liste_joueurs[i]-->nom);
+            printf("Au tour %s de jouer \n\n", liste_joueurs[i].nom);
             lancer_des(&liste_joueurs[i]);
             if (liste_joueurs[i].val_des >= 10)
             {
+                liste_joueurs[i].val_des = 0;
                 printf("Vous avez un score de dés d'au moins 10, vous pouvez aller dans les pièces suivantes : \n");
                 afficher_plateau();
             }
