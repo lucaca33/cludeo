@@ -21,6 +21,7 @@ typedef struct Joueur{
 
 Cartes* carte_coupable(Cartes * liste);
 Cartes* melanger_cartes(Cartes * liste);
+Cartes * init_deck();
 
 Joueur * rentrer_joueurs();
 
@@ -28,7 +29,9 @@ void lancer_des(Joueur * player);
 void deplacement(Joueur * player);
 void hypothese(Joueur * player1, Joueur * player2, Cartes * liste);
 void accusation(Joueur * player);
-void afficher_menu();
 void afficher_plateau(Joueur * player);
+void liste_shuffle(Cartes * liste, int taille);
+
+void afficher_menu();
 
 #endif
