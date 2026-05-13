@@ -135,3 +135,73 @@ void liste_shuffle(Cartes * liste, int taille){
         liste[i] = melange[i];
     }
 }
+
+Cartes* carte_coupable(Cartes * liste)
+{
+    Cartes * liste_coupable = malloc(sizeof(Cartes)*3);
+    int indice = 0;
+    int MIN = 0, MAX = 5;
+    srand(time(NULL));
+    indice = (rand() % (MAX + 1 - MIN)) + MIN;
+    liste_coupable[0] = liste[indice]; // pour le personnage coupable
+
+    MIN = 6, MAX = 15;
+    srand(time(NULL));
+    indice = (rand() % (MAX + 1 - MIN)) + MIN;;
+    liste_coupable[1] = liste[indice]; // pour le lieux du crime
+
+    MIN = 16, MAX = 21;
+    srand(time(NULL));
+    indice = (rand() % (MAX + 1 - MIN)) + MIN;;
+    liste_coupable[2] = liste[indice]; // pour l'arme du crime
+
+    return liste_coupable;    
+}
+
+int accusation(Joueur * player,cartes * reponse[], int nombre_carte){
+    char meutrier[50];
+    char arme[50];
+    char lieu[50];
+    printf("\n Qui souhaitez vous accuser?");
+    scanf("%s",&meutrier);
+    printf("\n Quelle est l'arme du crime?");
+    scanf("%s",&arme);
+    printf("\n Ou le crime a t il ete commis");
+    scanf("%s",&lieu);
+    if (meutrier == reponse[0] && arme == reponse[1] && lieu == reponse[2]){
+        printf("BONNE REPONSE.\n %s a donc ete arrete et passera le restant de ses jours en prison \n%s a gagne.",reponse[0]-->nom,player-->nom);
+        return 1;
+    }
+    else{
+        printf("C'est une mauvaise reponse. \n %s est donc elimine.",player-->nom);
+        return 0;
+    }
+}
+
+Joueur * elimination(Joueur * player)
+{
+    if(player == NULL)
+    {
+        return;
+    }
+    printf("\n Le joueur %s possedait : ",player->nom);
+    for(int i = 0; i < sizeof(player->cartes); i++)
+    {
+        if(player->cartes[i].type == "lieux")
+        {
+            printf("\n Le lieux %s",player->cartes[i].nom);
+        }
+        if(player->cartes[i].type == "arme")
+        {
+            printf("\n L'arme' %s",player->cartes[i].nom);
+        }
+        else
+        {
+            printf("\n Le suspect %s",player->cartes[i].nom);
+        }
+    }
+    free(player->cartes);
+    player->cartes = NULL;
+    free(player);
+    player = NULL;
+}
