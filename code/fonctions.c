@@ -155,3 +155,23 @@ Cartes* carte_coupable(Cartes * liste)
 
     return liste_coupable;    
 }
+
+int accusation(Joueur * player,cartes * reponse[], int nombre_carte){
+    char meutrier[50];
+    char arme[50];
+    char lieu[50];
+    printf("\n Qui souhaitez vous accuser?");
+    scanf("%s",&meutrier);
+    printf("\n Quelle est l'arme du crime?");
+    scanf("%s",&arme);
+    printf("\n Ou le crime a t il ete commis");
+    scanf("%s",&lieu);
+    if (meutrier == reponse[0] && arme == reponse[1] && lieu == reponse[2]){
+        printf("BONNE REPONSE.\n %s a donc ete arrete et passera le restant de ses jours en prison \n%s a gagne.",reponse[0]-->nom,player-->nom);
+        return 1;
+    }
+    else{
+        printf("C'est une mauvaise reponse. \n %s est donc elimine.",player-->nom);
+        return 0;
+    }
+}
