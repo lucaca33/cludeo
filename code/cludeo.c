@@ -23,7 +23,7 @@ int main(){
             if (liste_joueurs[i].val_des >= 10)
             {
                 printf("Vous avez un score de dés d'au moins 10, vous pouvez aller dans les pièces suivantes : \n");
-                afficher_plateau(liste_joueurs); // pas sur que cette fonction doit prendre liste joueur en argument
+                afficher_plateau();
             }
             else{
                 printf("Vous n'avez pas un assez bon score de dés :\nVotre score ! %d\nScore minimum pour se déplacer : 10", liste_joueurs[i].val_des);

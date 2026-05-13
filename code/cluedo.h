@@ -31,7 +31,7 @@ void lancer_des(Joueur * player);
 void deplacement(Joueur * player);
 void hypothese(Joueur * player1, Joueur * player2, Cartes * liste);
 void accusation(Joueur * player);
-void afficher_plateau(Joueur * player);
+void afficher_plateau();
 void liste_shuffle(Cartes * liste, int taille);
 
 
