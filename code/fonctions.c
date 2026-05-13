@@ -133,3 +133,25 @@ void liste_shuffle(Cartes * liste, int taille){
         liste[i] = melange[i];
     }
 }
+
+Cartes* carte_coupable(Cartes * liste)
+{
+    Cartes * liste_coupable = malloc(sizeof(Cartes)*3);
+    int indice = 0;
+    int MIN = 0, MAX = 5;
+    srand(time(NULL));
+    indice = (rand() % (MAX + 1 - MIN)) + MIN;
+    liste_coupable[0] = liste[indice]; // pour le personnage coupable
+
+    MIN = 6, MAX = 15;
+    srand(time(NULL));
+    indice = (rand() % (MAX + 1 - MIN)) + MIN;;
+    liste_coupable[1] = liste[indice]; // pour le lieux du crime
+
+    MIN = 16, MAX = 21;
+    srand(time(NULL));
+    indice = (rand() % (MAX + 1 - MIN)) + MIN;;
+    liste_coupable[2] = liste[indice]; // pour l'arme du crime
+
+    return liste_coupable;    
+}
