@@ -37,12 +37,14 @@ Joueur * rentrer_joueurs(){
 
 void liste_shuffle(cartes * liste[], int taille){
     int indice_utilises[50];
-    cartes mélange[50];
+    cartes melange[50];
     for(int i = 0;i < taille;i++){
         int indice;
         int verif = 0;
         while (verif == 0){
-            indice;  #donner une valeur aléatoire
+            const int MIN = 0, MAX = taille;
+            srand(time(NULL));
+            indice = (rand() % (MAX + 1 - MIN)) + MIN;
             verif = 1;
             for (int j = 0;j < i; j++){
                 if(indice == indice_utilises[j]){
@@ -53,5 +55,5 @@ void liste_shuffle(cartes * liste[], int taille){
         indice_utilises[i] = indice;
         mélange[i] = liste[indice];
     }
-    liste = mélange;
+    liste = melange;
 }
