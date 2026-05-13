@@ -159,6 +159,7 @@ Cartes* carte_coupable(Cartes * liste)
 }
 
 int accusation(Joueur * player,Cartes * reponse, int nombre_carte){
+    // on peut que accuser dans la pièce dans la quelle on est donc faudras changer vite fait
     char meutrier[50];
     char arme[50];
     char lieu[50];
