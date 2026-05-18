@@ -240,11 +240,11 @@ void afficher_plateau(Cartes *deck_original, int nb_cartes)
         if (!strcmp(deck_original[i].type, "lieux")) // si le type de la carte est un lieux
         {
             k++;
-            printf("%d : %s", k, deck_original[i].nom);
+            printf("%d : %s\n", k, deck_original[i].nom);
         }
     }
 
-    printf("Rentrer le numero du lieu ou vous voulez aller :");
+    printf("Rentrer le numero du lieu ou vous voulez aller : ");
 
     return;
 }
