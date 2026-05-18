@@ -1,8 +1,8 @@
 #include "cluedo.h"
 
-
-Cartes * init_deck(){
-    Cartes * deck = malloc(sizeof(Cartes)*22);
+Cartes *init_deck(int *nb_cartes)
+{
+    Cartes *deck = malloc(sizeof(Cartes) * 22);
     strcpy(deck[0].nom, "Colonel Moutarde");
     strcpy(deck[0].type, "personnage");
 
@@ -23,7 +23,6 @@ Cartes * init_deck(){
 
     strcpy(deck[6].nom, "Colonel Moutarde");
     strcpy(deck[6].type, "personnage");
-
 
     strcpy(deck[7].nom, "cuisine");
     strcpy(deck[7].type, "lieux");
@@ -55,7 +54,6 @@ Cartes * init_deck(){
     strcpy(deck[16].nom, "studio");
     strcpy(deck[16].type, "lieux");
 
-
     strcpy(deck[17].nom, "chandelier");
     strcpy(deck[17].type, "arme");
 
@@ -73,12 +71,14 @@ Cartes * init_deck(){
 
     strcpy(deck[22].nom, "revolver");
     strcpy(deck[22].type, "arme");
+
+    *nb_cartes = 21;
     return deck;
 }
 
-void lancer_des(Joueur * player)
+void lancer_des(Joueur *player)
 {
-    if(player == NULL)
+    if (player == NULL)
     {
         return;
     }
@@ -90,17 +90,29 @@ void lancer_des(Joueur * player)
     player->val_des += nombre;
 }
 
-Joueur * rentrer_joueurs(int * nb){
+Joueur *rentrer_joueurs(int *nb)
+{
     printf("Combien de joueurs (humains) pour cette partie ? ");
     scanf("%d", nb);
     getchar();
 
-    Joueur* joueurs = malloc(sizeof(Joueur)*(*nb)); // liste des joueurs de taille nb_joueurs    
+    Joueur *joueurs = malloc(sizeof(Joueur) * (*nb)); // liste des joueurs de taille nb_joueurs
 
     for (int i = 0; i < (*nb); i++)
     {
-        printf("Rentrez le nom du joueur  %d (max : 30 char) : ",i+1);
+        printf("Rentrez le nom du joueur  %d (max : 30 char) : ", i + 1);
         fgets(joueurs[i].nom, 30, stdin); // on récupere le nom du n-ieme joueur
+        if (strchr(joueurs[i].nom, '\n') == NULL)
+        {
+            // entrée trop longue -> vider le buffer
+            int c;
+            while ((c = getchar()) != '\n' && c != EOF);
+        }
+        else
+        {
+            // enlever le '\n'
+            joueurs[i].nom[strcspn(joueurs[i].nom, "\n")] = '\0';
+        }
         joueurs[i].val_des = 0;
         // initialiser les cartes du joueur
         // pour l'instant je fait pas, a voir plus tard
@@ -108,19 +120,24 @@ Joueur * rentrer_joueurs(int * nb){
     return joueurs;
 }
 
-void liste_shuffle(Cartes * liste, int taille){
+void liste_shuffle(Cartes *liste, int taille)
+{
     int indice_utilises[50];
     Cartes melange[50];
-    for(int i = 0;i < taille;i++){
+    for (int i = 0; i < taille; i++)
+    {
         int indice;
         int verif = 0;
-        while (verif == 0){
+        while (verif == 0)
+        {
             const int MIN = 0, MAX = taille;
             srand(time(NULL));
             indice = (rand() % (MAX + 1 - MIN)) + MIN;
             verif = 1;
-            for (int j = 0;j < i; j++){
-                if(indice == indice_utilises[j]){
+            for (int j = 0; j < i; j++)
+            {
+                if (indice == indice_utilises[j])
+                {
                     verif = 0;
                 }
             }
@@ -129,16 +146,16 @@ void liste_shuffle(Cartes * liste, int taille){
         melange[i] = liste[indice];
     }
 
-    //cher malo, on peut pas juste faire liste = melange 
+    // cher malo, on peut pas juste faire liste = melange
     for (int i = 0; i < taille; i++)
     {
         liste[i] = melange[i];
     }
 }
 
-Cartes* carte_coupable(Cartes * liste)
+Cartes *carte_coupable(Cartes *liste)
 {
-    Cartes * liste_coupable = malloc(sizeof(Cartes)*3);
+    Cartes *liste_coupable = malloc(sizeof(Cartes) * 3);
     int indice = 0;
     int MIN = 0, MAX = 5;
     srand(time(NULL));
@@ -147,62 +164,90 @@ Cartes* carte_coupable(Cartes * liste)
 
     MIN = 6, MAX = 15;
     srand(time(NULL));
-    indice = (rand() % (MAX + 1 - MIN)) + MIN;;
+    indice = (rand() % (MAX + 1 - MIN)) + MIN;
+    ;
     liste_coupable[1] = liste[indice]; // pour le lieux du crime
 
     MIN = 16, MAX = 21;
     srand(time(NULL));
-    indice = (rand() % (MAX + 1 - MIN)) + MIN;;
+    indice = (rand() % (MAX + 1 - MIN)) + MIN;
+    ;
     liste_coupable[2] = liste[indice]; // pour l'arme du crime
 
-    return liste_coupable;    
+    return liste_coupable;
 }
 
-int accusation(Joueur * player,Cartes * reponse, int nombre_carte){
+int accusation(Joueur *player, Cartes *reponse, int nombre_carte)
+{
     // on peut que accuser dans la pièce dans la quelle on est donc faudras changer vite fait
     char meutrier[50];
     char arme[50];
     char lieu[50];
     printf("\n Qui souhaitez vous accuser?");
-    scanf("%s",&meutrier);
+    scanf("%s", &meutrier);
     printf("\n Quelle est l'arme du crime?");
-    scanf("%s",&arme);
+    scanf("%s", &arme);
     printf("\n Ou le crime a t il ete commis");
-    scanf("%s",&lieu);
-    if (meutrier == reponse[0].nom && arme == reponse[1].nom && lieu == reponse[2].nom){
-        printf("BONNE REPONSE.\n %s a donc ete arrete et passera le restant de ses jours en prison \n%s a gagne.",reponse[0].nom,player->nom);
+    scanf("%s", &lieu);
+    if (meutrier == reponse[0].nom && arme == reponse[1].nom && lieu == reponse[2].nom)
+    {
+        printf("BONNE REPONSE.\n %s a donc ete arrete et passera le restant de ses jours en prison \n%s a gagne.", reponse[0].nom, player->nom);
         return 1;
     }
-    else{
-        printf("C'est une mauvaise reponse. \n %s est donc elimine.",player->nom);
+    else
+    {
+        printf("C'est une mauvaise reponse. \n %s est donc elimine.", player->nom);
         return 0;
     }
 }
 
-Joueur * elimination(Joueur * player)
+Joueur *elimination(Joueur *player)
 {
-    if(player == NULL)
+    if (player == NULL)
     {
-        return;
+        return NULL;
     }
-    printf("\n Le joueur %s possedait : ",player->nom);
-    for(int i = 0; i < sizeof(player->cartes); i++)
+    printf("\n Le joueur %s possedait : ", player->nom);
+    for (int i = 0; i < sizeof(player->cartes); i++)
     {
-        if(player->cartes[i].type == "lieux")
+        if (player->cartes[i].type == "lieux")
         {
-            printf("\n Le lieux %s",player->cartes[i].nom);
+            printf("\n Le lieux %s", player->cartes[i].nom);
         }
-        if(player->cartes[i].type == "arme")
+        if (player->cartes[i].type == "arme")
         {
-            printf("\n L'arme' %s",player->cartes[i].nom);
+            printf("\n L'arme' %s", player->cartes[i].nom);
         }
         else
         {
-            printf("\n Le suspect %s",player->cartes[i].nom);
+            printf("\n Le suspect %s", player->cartes[i].nom);
         }
     }
     free(player->cartes);
     player->cartes = NULL;
     free(player);
     player = NULL;
+}
+
+void afficher_plateau(Cartes *deck_original, int nb_cartes)
+{
+
+    if (deck_original == NULL)
+    {
+        return;
+    }
+
+    int k = 0;
+    for (int i = 0; i < nb_cartes; i++)
+    {
+        if (!strcmp(deck_original[i].type, "lieux")) // si le type de la carte est un lieux
+        {
+            k++;
+            printf("%d : %s", k, deck_original[i].nom);
+        }
+    }
+
+    printf("Rentrer le numero du lieu ou vous voulez aller :");
+
+    return;
 }
