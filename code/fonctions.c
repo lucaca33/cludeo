@@ -248,3 +248,16 @@ void afficher_plateau(Cartes *deck_original, int nb_cartes)
 
     return;
 }
+
+void distrib(Cartes * liste_melange[],Joueurs * liste_joueurs,int nombre_joueurs){
+    for(int i = 1;i <= 18,i++){
+        int position = (i-1)/nombre_joueurs;
+        if((i-1) < nombre_joueurs){
+            int joueur = (nombre_joueurs%i)-1;
+        }
+        else{
+            int joueur = (i-1)%nombre_joueurs;
+        }
+        liste_joueurs[joueur]-->cartes[position];
+    }
+}
