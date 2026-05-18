@@ -317,3 +317,72 @@ void hypothèse(Joueur * player, Joueur * liste_player, char lieux[50])
     nombre = (rand() % (max + 1 - min)) + min;
     printf("Le joueur %d vous montre la carte %s",indice,test[nombre]);
 }
+
+void hypothèse(Joueur * player, Joueur * liste_player, int indice_lieu)
+{
+    if(player == NULL)
+    {
+        return;
+    }
+    char lieux[50];
+    char meurtrier[50];
+    char arme[50];
+    int indice;
+    if(indice_lieu == 1)
+    {
+        strcpy(lieux,"cuisine");
+    } 
+    else if(indice_lieu == 2)
+    {
+        strcpy(lieux,"grand salon");
+    }
+    else if(indice_lieu == 3)
+    {
+        strcpy(lieux,"petit salon");
+    }
+    else if(indice_lieu == 4)
+    {
+        strcpy(lieux,"salle à manger");
+    }
+    else if(indice_lieu == 5)
+    {
+        strcpy(lieux,"bureau");
+    }
+    else if(indice_lieu == 6)
+    {
+        strcpy(lieux,"bibliothèque");
+    }
+    else if(indice_lieu == 7)
+    {
+        strcpy(lieux,"véranda");
+    }
+    else if(indice_lieu == 8)
+    {
+        strcpy(lieux,"hall");
+    }
+    else
+    {
+        strcpy(lieux,"studio");
+    }
+    printf("\n Sur qui vous avez des soupcons ?");
+    scanf("%s",&meurtrier);
+    printf("\n Quelle arme de l'hypothese ?");
+    scanf("%s",&arme);
+    printf("\n Quel joueur interroger ?");
+    scanf("%d",&indice);
+    Cartes * test;
+    for(int i = 0; i < sizeof(liste_player[indice].cartes); i++)
+    {
+        if(liste_player[indice].cartes[i].nom == (lieux || meurtrier || arme))
+        {
+            test[i] = liste_player[indice].cartes[i];
+        }
+    }
+
+    int nombre;
+    int max = sizeof(test);
+    int min = 0;
+    srand(time(NULL));
+    nombre = (rand() % (max + 1 - min)) + min;
+    printf("Le joueur %d vous montre la carte %s",indice,test[nombre]);
+}
