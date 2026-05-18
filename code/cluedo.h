@@ -31,7 +31,7 @@ void hypothese(Joueur * player1, Joueur * player2, Cartes * liste);
 int accusation(Joueur * player,Cartes * reponse, int nombre_carte);
 void afficher_plateau(Cartes * deck_original, int nb_cartes);
 void liste_shuffle(Cartes * liste, int taille);
-
+void tour_joueur(Joueur* joueur, int time_sleep, Cartes * deck_original, int nb_cartes, int * choix);
 
 void afficher_menu();
 

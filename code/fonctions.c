@@ -21,7 +21,6 @@ Cartes *init_deck(int *nb_cartes)
     strcpy(deck[5].nom, "Monsieur Olive");
     strcpy(deck[5].type, "personnage");
 
-
     strcpy(deck[6].nom, "cuisine");
     strcpy(deck[6].type, "lieux");
 
@@ -48,7 +47,6 @@ Cartes *init_deck(int *nb_cartes)
 
     strcpy(deck[14].nom, "studio");
     strcpy(deck[14].type, "lieux");
-
 
     strcpy(deck[15].nom, "chandelier");
     strcpy(deck[15].type, "arme");
@@ -102,7 +100,8 @@ Joueur *rentrer_joueurs(int *nb)
         {
             // entrée trop longue -> vider le buffer
             int c;
-            while ((c = getchar()) != '\n' && c != EOF);
+            while ((c = getchar()) != '\n' && c != EOF)
+                ;
         }
         else
         {
@@ -246,16 +245,43 @@ void afficher_plateau(Cartes *deck_original, int nb_cartes)
     return;
 }
 
-void distrib(Cartes * liste_melange,Joueur * liste_joueurs,int nombre_joueurs){
+void distrib(Cartes *liste_melange, Joueur *liste_joueurs, int nombre_joueurs)
+{
     int joueur;
-    for(int i = 1;i <= 18;i++){
-        int position = (i-1)/nombre_joueurs;
-        if((i-1) < nombre_joueurs){
-            int joueur = (nombre_joueurs%i)-1;
+    for (int i = 1; i <= 18; i++)
+    {
+        int position = (i - 1) / nombre_joueurs;
+        if ((i - 1) < nombre_joueurs)
+        {
+            int joueur = (nombre_joueurs % i) - 1;
         }
-        else{
-            int joueur = (i-1)%nombre_joueurs;
+        else
+        {
+            int joueur = (i - 1) % nombre_joueurs;
         }
         liste_joueurs[joueur].cartes[position] = liste_melange[i];
     }
+}
+
+void tour_joueur(Joueur* joueur, int time_sleep, Cartes * deck_original, int nb_cartes, int * choix)
+{
+
+    printf("================\n");
+    printf("Au tour %s de jouer \n\n", joueur->nom);
+    Sleep(time_sleep);
+    lancer_des(&time_sleep);
+    Sleep(time_sleep);
+    if (joueur->val_des >= 10)
+    {
+        joueur->val_des = 0;
+        printf("Vous avez un score de dés d'au moins 10, vous pouvez aller dans les pièces suivantes : \n");
+        Sleep(time_sleep);
+        afficher_plateau(deck_original, nb_cartes);
+        scanf("%d", &choix);
+    }
+    else
+    {
+        printf("Vous n'avez pas un assez bon score de dés !\nVotre score : %d\nScore minimum pour se déplacer : 10\n", joueur->val_des);
+    }
+    Sleep(time_sleep * 2);
 }
