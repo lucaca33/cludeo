@@ -249,8 +249,9 @@ void afficher_plateau(Cartes *deck_original, int nb_cartes)
     return;
 }
 
-void distrib(Cartes * liste_melange[],Joueurs * liste_joueurs,int nombre_joueurs){
-    for(int i = 1;i <= 18,i++){
+void distrib(Cartes * liste_melange,Joueur * liste_joueurs,int nombre_joueurs){
+    int joueur;
+    for(int i = 1;i <= 18;i++){
         int position = (i-1)/nombre_joueurs;
         if((i-1) < nombre_joueurs){
             int joueur = (nombre_joueurs%i)-1;
@@ -258,6 +259,6 @@ void distrib(Cartes * liste_melange[],Joueurs * liste_joueurs,int nombre_joueurs
         else{
             int joueur = (i-1)%nombre_joueurs;
         }
-        liste_joueurs[joueur]-->cartes[position];
+        liste_joueurs[joueur].cartes[position] = liste_melange[i];
     }
 }
