@@ -259,3 +259,35 @@ void distrib(Cartes * liste_melange,Joueur * liste_joueurs,int nombre_joueurs){
         liste_joueurs[joueur].cartes[position] = liste_melange[i];
     }
 }
+
+void hypothèse(Joueur * player, Joueur * liste_player, char lieux[50])
+{
+    if(player == NULL)
+    {
+        return;
+    }
+    char meurtrier[50];
+    char arme[50];
+    int indice;
+    printf("\n Sur qui vous avez des soupcons ?");
+    scanf("%s",&meurtrier);
+    printf("\n Quelle arme de l'hypothese ?");
+    scanf("%s",&arme);
+    printf("\n Quel joueur interroger ?");
+    scanf("%d",&indice);
+    Cartes * test;
+    for(int i = 0; i < sizeof(liste_player[indice].cartes); i++)
+    {
+        if(liste_player[indice].cartes[i].nom == (lieux || meurtrier || arme))
+        {
+            test[i] = liste_player[indice].cartes[i];
+        }
+    }
+
+    int nombre;
+    int max = sizeof(test);
+    int min = 0;
+    srand(time(NULL));
+    nombre = (rand() % (max + 1 - min)) + min;
+    printf("Le joueur %d vous montre la carte %s",indice,test[nombre]);
+}
