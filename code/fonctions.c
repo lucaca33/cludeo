@@ -144,12 +144,12 @@ Cartes* carte_coupable(Cartes * liste)
 
     MIN = 6, MAX = 15;
     srand(time(NULL));
-    indice = (rand() % (MAX + 1 - MIN)) + MIN;;
+    indice = (rand() % (MAX + 1 - MIN)) + MIN;
     liste_coupable[1] = liste[indice]; // pour le lieux du crime
 
     MIN = 16, MAX = 21;
     srand(time(NULL));
-    indice = (rand() % (MAX + 1 - MIN)) + MIN;;
+    indice = (rand() % (MAX + 1 - MIN)) + MIN;
     liste_coupable[2] = liste[indice]; // pour l'arme du crime
 
     return liste_coupable;    
