@@ -21,58 +21,55 @@ Cartes * init_deck(){
     strcpy(deck[5].nom, "Monsieur Olive");
     strcpy(deck[5].type, "personnage");
 
-    strcpy(deck[6].nom, "Colonel Moutarde");
-    strcpy(deck[6].type, "personnage");
 
+    strcpy(deck[6].nom, "cuisine");
+    strcpy(deck[6].type, "lieux");
 
-    strcpy(deck[7].nom, "cuisine");
+    strcpy(deck[7].nom, "grand salon");
     strcpy(deck[7].type, "lieux");
 
-    strcpy(deck[8].nom, "grand salon");
+    strcpy(deck[8].nom, "petit salon");
     strcpy(deck[8].type, "lieux");
 
-    strcpy(deck[9].nom, "petit salon");
+    strcpy(deck[9].nom, "salle à manger");
     strcpy(deck[9].type, "lieux");
 
-    strcpy(deck[10].nom, "salle à manger");
+    strcpy(deck[10].nom, "cave");
     strcpy(deck[10].type, "lieux");
 
-    strcpy(deck[11].nom, "cave");
+    strcpy(deck[11].nom, "bureau");
     strcpy(deck[11].type, "lieux");
 
-    strcpy(deck[12].nom, "bureau");
+    strcpy(deck[12].nom, "bibliothèque");
     strcpy(deck[12].type, "lieux");
 
-    strcpy(deck[13].nom, "bibliothèque");
+    strcpy(deck[13].nom, "véranda");
     strcpy(deck[13].type, "lieux");
 
-    strcpy(deck[14].nom, "véranda");
+    strcpy(deck[14].nom, "hall");
     strcpy(deck[14].type, "lieux");
 
-    strcpy(deck[15].nom, "hall");
+    strcpy(deck[15].nom, "studio");
     strcpy(deck[15].type, "lieux");
 
-    strcpy(deck[16].nom, "studio");
-    strcpy(deck[16].type, "lieux");
 
+    strcpy(deck[16].nom, "chandelier");
+    strcpy(deck[16].type, "arme");
 
-    strcpy(deck[17].nom, "chandelier");
+    strcpy(deck[17].nom, "clef anglaise");
     strcpy(deck[17].type, "arme");
 
-    strcpy(deck[18].nom, "clef anglaise");
+    strcpy(deck[18].nom, "corde");
     strcpy(deck[18].type, "arme");
 
-    strcpy(deck[19].nom, "corde");
+    strcpy(deck[19].nom, "matraque");
     strcpy(deck[19].type, "arme");
 
-    strcpy(deck[20].nom, "matraque");
+    strcpy(deck[20].nom, "poignard ");
     strcpy(deck[20].type, "arme");
 
-    strcpy(deck[21].nom, "poignard ");
+    strcpy(deck[21].nom, "revolver");
     strcpy(deck[21].type, "arme");
-
-    strcpy(deck[22].nom, "revolver");
-    strcpy(deck[22].type, "arme");
     return deck;
 }
 
