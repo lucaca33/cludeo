@@ -190,6 +190,7 @@ int accusation(Joueur *player, Cartes *reponse, int nombre_carte)
     else
     {
         printf("C'est une mauvaise reponse. \n %s est donc elimine.", player->nom);
+        elimination(player);
         return 0;
     }
 }
