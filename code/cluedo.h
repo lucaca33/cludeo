@@ -19,7 +19,6 @@ typedef struct Joueur{
 }Joueur;
 
 Cartes* carte_coupable(Cartes * liste);
-Cartes* melanger_cartes(Cartes * liste);
 Cartes * init_deck(int * nb_cartes);
 
 Joueur * rentrer_joueurs(int * nb);
@@ -27,12 +26,12 @@ Joueur * elimination(Joueur * player);
 
 void lancer_des(Joueur * player);
 void deplacement(Joueur * player);
-void hypothese(Joueur * player1, Joueur * player2, Cartes * liste);
+void hypothèse(Joueur * player, Joueur * liste_player, int indice_lieu);
 int accusation(Joueur * player,Cartes * reponse, int nombre_carte);
 void afficher_plateau(Cartes * deck_original, int nb_cartes);
 void liste_shuffle(Cartes * liste, int taille);
 void tour_joueur(Joueur* joueur, int time_sleep, Cartes * deck_original, int nb_cartes, int * choix);
-
+void distrib(Cartes *liste_melange, Joueur *liste_joueurs, int nombre_joueurs);
 void afficher_menu();
 
 #endif
